@@ -1,0 +1,213 @@
+
+# Python Practical Test – Automated Multi-Platform Posting System
+
+| Details | Information |
+|---|---|
+| **Technology** | Python 3.x, FastAPI |
+| **Duration** | Maximum 2-3 Hours |
+| **Difficulty** | Beginner to Intermediate |
+| **Submission** | Public GitHub Repository |
+
+## 1. Objective
+
+Develop a Python application using **FastAPI** that automatically publishes a short message across multiple third-party websites, portals, and supported LLM platforms through their APIs.
+
+Applicants are responsible for identifying suitable platforms, researching their API documentation, and implementing the integrations independently.
+
+## 2. API Requirement
+
+Create one REST API endpoint:
+
+**Endpoint:**
+```http
+POST http://localhost:4000/posting
+```
+
+### Request Body
+
+```json
+{
+  "message": "Check out our latest business platform and grow your online visibility. https://example.com"
+}
+```
+
+### Input Validation
+
+- Message must not exceed 200 characters.
+- Exactly one CTA link must be included in the message.
+- Validate the URL.
+- Platform selection must be handled internally by the application.
+- Return appropriate validation errors for invalid input.
+
+## 3. Functional Requirements
+
+### A. Platform Identification and Integration
+
+- Identify at least **5 suitable third-party platforms** independently.
+- Research their official API documentation.
+- Implement the required API integrations.
+- Automatically publish the submitted message.
+- Handle each platform independently.
+- If one platform fails, continue posting to the remaining platforms.
+
+### B. Posting Results
+
+Return the following information for each platform:
+
+| Field | Description |
+|---|---|
+| Platform | Platform name |
+| Status | Success / Failed |
+| Posted URL | Published content URL |
+| Public Access | Whether content is publicly accessible |
+| Date | Posting date |
+| Time | Posting time |
+| Error | Error details, if applicable |
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "results": [
+    {
+      "platform": "Platform A",
+      "status": "success",
+      "posted_url": "https://example.com/post/123",
+      "public_access": true,
+      "date": "2026-11-15",
+      "time": "10:30:00",
+      "error": null
+    },
+    {
+      "platform": "Platform B",
+      "status": "failed",
+      "posted_url": null,
+      "public_access": false,
+      "date": null,
+      "time": null,
+      "error": "Authentication failed"
+    }
+  ]
+}
+```
+
+*Note: The above is sample output. Return actual results from your integrations.*
+
+## 4. Technical Requirements
+
+Use the following technologies:
+
+- Python 3.x
+- FastAPI
+- Uvicorn
+- Pydantic
+- HTTPX or Requests
+- REST API integration
+- Environment variables for API credentials
+
+### Local Server
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 4000
+```
+
+### API Documentation
+
+Open the following URL after starting the server:
+
+http://localhost:4000/docs
+
+## 5. Suggested Project Structure
+
+```text
+automated-posting/
+│
+├── app/
+│   ├── main.py
+│   ├── schemas.py
+│   ├── config.py
+│   ├── platforms/
+│   │   ├── base.py
+│   │   ├── platform_a.py
+│   │   ├── platform_b.py
+│   │   └── platform_c.py
+│   └── services/
+│       └── posting_service.py
+│
+├── tests/
+│   └── test_posting.py
+│
+├── .env.example
+├── requirements.txt
+└── README.md
+```
+
+## 6. Evaluation Criteria
+
+| Criteria | Marks |
+|---|---:|
+| FastAPI implementation and API structure | 15 |
+| Input validation | 15 |
+| Platform research and API integration | 25 |
+| Automatic multi-platform posting | 20 |
+| Error handling and response management | 10 |
+| Code quality and GitHub documentation | 15 |
+| **Total** | **100** |
+
+## 7. Submission Instructions
+
+Once you complete the practical test:
+
+1. Upload your complete source code to GitHub.
+2. Make your GitHub repository **Public**.
+3. Include a `README.md` with setup and execution instructions.
+4. Include sample API requests and responses.
+5. Add screenshots or logs demonstrating your implementation.
+6. Ensure no API keys, passwords, or private credentials are committed.
+
+**Time Limit: Maximum 4 Hours.**
+
+## 8. Final Submission – Email Instructions
+
+After completing the practical test, send an email to:
+
+**To:** hr@chivoxai.com
+
+**Subject:** Your Name - Python Practical test review
+
+### Email Body
+
+Please include the following details:
+
+1. **Your Full Name:**
+2. **GitHub Repository Link:** Public repository link so our team can review your source code.
+3. **Contact Number:**
+4. **Current Location:** City and State.
+5. **Best Time to Discuss:** Your preferred date and time for the final-round discussion.
+
+## 9. Submission Deadline
+
+**Final Submission Date: 22nd November 2026**
+
+Applicants must complete the practical test and submit their public GitHub repository link by **22nd November 2026**.
+
+Late submissions may not be considered for the review process.
+
+## 10. Final Round – Dxora Panel Interview
+
+After reviewing your GitHub repository, our team will evaluate your practical implementation.
+
+Shortlisted applicants will be contacted for the final technical discussion with the **Dxora Panel**.
+
+We will review your:
+
+- Python programming skills.
+- FastAPI and REST API knowledge.
+- Third-party API research and integration.
+- Problem-solving approach.
+- Code structure and implementation decisions.
+
+---
+
+**All the best! We look forward to reviewing your work.**
